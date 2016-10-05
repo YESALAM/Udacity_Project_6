@@ -119,6 +119,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         String showString = "Time: " + rightNow.getTimeInMillis() ;
         putDataMapRequest.getDataMap().putString(KEY,showString);
         PutDataRequest putDataRequest = putDataMapRequest.asPutDataRequest();
+
         PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi.putDataItem(mGoogleApiClient,putDataRequest) ;
     }
 
@@ -163,6 +164,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build() ;
+        //mGoogleApiClient.connect();
     }
 
     @Override
