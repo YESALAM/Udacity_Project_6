@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                 if(item.getUri().getPath().compareTo("/num")==0){
                     DataMap dataMap = DataMapItem.fromDataItem(item).getDataMap();
                     //updateTV(dataMap.getString(KEY));
-                    mTextView.setText(dataMap.getString(KEY));
+                    mTextView.setText("Welcome to Sunxhine wear Activity");
                 }
             }
         }

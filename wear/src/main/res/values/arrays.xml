@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="colorArray" >
+        <item>@color/backgroundRed</item>
+        <item>@color/backgroundPink</item>
+        <item>@color/backgroundPurple</item>
+        <item>@color/BackgroundDeepPurple</item>
+        <item>@color/backgroundIndigo</item>
+        <item>@color/backgroundBlue</item>
+        <item>@color/backgroundLightBlue</item>
+        <item>@color/backgroundCyan</item>
+        <item>@color/backgroundTeal</item>
+        <item>@color/backgroundGreen</item>
+        <item>@color/backgroundLightGreen</item>
+        <item>@color/backgroundLime</item>
+        <item>@color/backgroundYellow</item>
+        <item>@color/backgroundAmber</item>
+        <item>@color/backgroundOrange</item>
+        <item>@color/backgroundDarkOrange</item>
+    </array>
+    
+    
+</resources>
