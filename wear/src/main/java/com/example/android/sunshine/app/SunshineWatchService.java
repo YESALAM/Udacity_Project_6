@@ -35,6 +35,7 @@ import android.os.Message;
 import android.support.wearable.watchface.CanvasWatchFaceService;
 import android.support.wearable.watchface.WatchFaceStyle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.WindowInsets;
 import android.widget.Toast;
@@ -115,6 +116,7 @@ public class SunshineWatchService extends CanvasWatchFaceService {
         final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+
                 String text = intent.getStringExtra(getString(R.string.BRODCAST_INTENT_KEY));
                 lowtemp = intent.getStringExtra(getString(R.string.LOW_TEMP_KEY));
                 hightemp = intent.getStringExtra(getString(R.string.HIGH_TEMP_KEY));

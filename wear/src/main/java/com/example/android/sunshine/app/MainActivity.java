@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        Log.e("watchMain","OnConnnected") ;
         Wearable.DataApi.addListener(mGoogleApiClient,this) ;
     }
 
@@ -85,7 +86,11 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                     //updateTV(dataMap.getString(KEY));
                     mTextView.setText("Welcome to Sunxhine wear Activity");
                 }
+
             }
+            mTextView.setText("Welcome to Sunxhine wear Activity");
+            Log.e("watchMain","NoChangeOfcourse") ;
+
         }
     }
 

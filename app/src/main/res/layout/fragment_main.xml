@@ -39,12 +39,7 @@
             android:elevation="0dp"
             app:layout_scrollFlags="scroll|enterAlways"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-            <Button
-                android:id="@+id/btTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="sendTest"
-                />
+
 
             <ImageView
                 android:layout_marginTop="?attr/actionBarSize"

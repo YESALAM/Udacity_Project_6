@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SunshineWear</string>
     <string name="message">Watch face tapped</string>
-    <string name="my_digital_name">My Digital</string>
+    <string name="my_digital_name">Sunxhine</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
@@ -11,6 +11,6 @@
     <string name="WEATID_KEY" translatable="false">weatheridkey</string>
     <string name="DESC_KEY" translatable="false">desckey</string>
 
-    <string name="Text_RECEIVER_ACTION">com.example.android.sunshine.app.messageReceiver</string>
+    <string name="Text_RECEIVER_ACTION">com.example.android.sunshine.app.broadcastReceiver</string>
     <string name="BRODCAST_INTENT_KEY">showText_key</string>
 </resources>

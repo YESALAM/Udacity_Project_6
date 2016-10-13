@@ -25,7 +25,6 @@ public class DataListenerService extends WearableListenerService {
     @Override
     public void onDataChanged(DataEventBuffer dataEventBuffer) {
         super.onDataChanged(dataEventBuffer);
-
         for (DataEvent event : dataEventBuffer) {
             if (event.getType() == DataEvent.TYPE_CHANGED) {
                 // DataItem changed
@@ -53,6 +52,7 @@ public class DataListenerService extends WearableListenerService {
 
                     intent.setAction(getString(R.string.Text_RECEIVER_ACTION));
                     sendBroadcast(intent);
+
                 }
             } else if (event.getType() == DataEvent.TYPE_DELETED) {
                 // DataItem deleted

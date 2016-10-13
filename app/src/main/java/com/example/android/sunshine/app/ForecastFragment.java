@@ -53,6 +53,7 @@ import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
@@ -63,7 +64,7 @@ import java.util.Calendar;
 /**
  * Encapsulates fetching the forecast and displaying it as a {@link android.support.v7.widget.RecyclerView} layout.
  */
-public class ForecastFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, SharedPreferences.OnSharedPreferenceChangeListener ,View.OnClickListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
+public class ForecastFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, SharedPreferences.OnSharedPreferenceChangeListener ,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
     public static final String LOG_TAG = ForecastFragment.class.getSimpleName();
     private ForecastAdapter mForecastAdapter;
     private RecyclerView mRecyclerView;
@@ -71,11 +72,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     private int mChoiceMode;
     private boolean mHoldForTransition;
     private long mInitialSelectedDate = -1;
-    private Button btTest ;
-    private GoogleApiClient mGoogleApiClient ;
-    private String KEY = "key" ;
 
-    private static final String SELECTED_KEY = "selected_position";
 
     private static final int FORECAST_LOADER = 0;
     // For the forecast view we're showing only a small subset of the stored data.
@@ -110,18 +107,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     static final int COL_COORD_LAT = 7;
     static final int COL_COORD_LONG = 8;
 
-    //Todo just for test
-    @Override
-    public void onClick(View v) {
 
-        PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/num");
-        Calendar rightNow = Calendar.getInstance() ;
-        String showString = "Time: " + rightNow.getTimeInMillis() ;
-        putDataMapRequest.getDataMap().putString(KEY,showString);
-        PutDataRequest putDataRequest = putDataMapRequest.asPutDataRequest();
-
-        PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi.putDataItem(mGoogleApiClient,putDataRequest) ;
-    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -159,12 +145,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(getContext())
-                .addApi(Wearable.API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build() ;
-        //mGoogleApiClient.connect();
+
     }
 
     @Override
@@ -172,7 +153,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         sp.registerOnSharedPreferenceChangeListener(this);
         super.onResume();
-        mGoogleApiClient.connect();
+
     }
 
     @Override
@@ -180,7 +161,6 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         sp.unregisterOnSharedPreferenceChangeListener(this);
         super.onPause();
-        mGoogleApiClient.disconnect();
     }
 
     @Override
@@ -224,9 +204,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        //Todo just for test purpose
-        btTest = (Button) rootView.findViewById(R.id.btTest) ;
-        btTest.setOnClickListener(this);
+
 
         // Get a reference to the RecyclerView, and attach this adapter to it.
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview_forecast);

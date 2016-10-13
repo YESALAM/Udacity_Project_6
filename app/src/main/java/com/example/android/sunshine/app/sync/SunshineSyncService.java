@@ -15,8 +15,16 @@ public class SunshineSyncService extends Service {
         synchronized (sSyncAdapterLock) {
             if (sSunshineSyncAdapter == null) {
                 sSunshineSyncAdapter = new SunshineSyncAdapter(getApplicationContext(), true);
+                //sSunshineSyncAdapter.mGoogleApiClient.connect();
             }
         }
+    }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+
     }
 
     @Override
